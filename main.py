@@ -51,10 +51,6 @@ average = 0
 for i in range(len(res)):
 	average += i * probability[i]
 
-average /= 11
-
-plot_text += 'Średnia arytmetyczna: ' + str(round(average, 3)) + '\n'
-
 # Wariancja
 
 variance = 0
@@ -75,6 +71,15 @@ def pois(num):
 pois_y = []
 for i in x:
 	pois_y.append(pois(i) * 1000)
+
+# Rozkład Chi
+
+chi_distrib = 0
+
+for i in range(len(res)):
+	chi_distrib += (res[i] - pois_y[i]) ** 2 / pois_y[i]
+
+plot_text += 'Rozkład Chi: ' + str(round(chi_distrib, 3)) + '\n'
 
 # error bars
 error_bars = []
